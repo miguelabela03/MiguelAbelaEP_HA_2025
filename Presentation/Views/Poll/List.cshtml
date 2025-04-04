@@ -4,9 +4,13 @@
     ViewData["Title"] = "List";
 }
 
-<h1 class="text-center">Polls</h1>
-
 <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div></div> <!-- Placeholder for left alignment (if needed) -->
+        <a href="#" class="btn btn-outline-dark">Add a New Poll</a>
+    </div>
+    <h1 class="text-center">Polls</h1>
+
     <div class="row">
         @foreach (var poll in Model)
         {
