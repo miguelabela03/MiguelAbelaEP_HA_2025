@@ -9,7 +9,8 @@ namespace Domain.Models
 {
     public class Poll
     {
-        [Key] public int PollId { get; set; }
+        [Key] 
+        public int PollId { get; set; }
 
         public string Title { get; set; }
 
