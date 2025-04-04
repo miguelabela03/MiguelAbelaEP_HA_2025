@@ -22,13 +22,12 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text">Explore poll results and cast your vote.</p>
-                        <!-- Results Button -->
-                        <a href="#" class="btn btn-outline-primary">Results</a>
+
+                        <a href="/Poll/Results?pollId=@poll.PollId" class="btn btn-outline-primary">Results</a>
                     </div>
                     <div class="card-footer bg-light d-flex justify-content-between">
-                        <!-- View Details Button -->
                         <a href="/Poll/ViewPollDetails?pollId=@poll.PollId" class="btn btn-outline-success">View Details</a>
-                        <!-- Vote Button -->
+
                         <a href="/Poll/Vote?pollId=@poll.PollId" class="btn btn-outline-danger">Vote</a>
                     </div>
                 </div>

@@ -1,0 +1,52 @@
+﻿@model Domain.Models.Poll
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white text-center">
+            <h2 class="mb-0">@Model.Title - Results</h2>
+        </div>
+
+        <div class="card-body d-flex flex-column align-items-center">
+            <canvas id="myChart" style="max-width: 800px;"></canvas>
+        </div>
+
+        <div class="card-footer text-center">
+            <a href="/Poll/List" class="btn btn-outline-secondary">Back to Polls List</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+<script>
+    // Link used: https://www.w3schools.com/js/tryit.asp?filename=tryai_chartjs_bars_horizontal
+
+    // Getting the chart element from within the view
+    const barChart = document.getElementById('myChart').getContext('2d');
+
+    // Getting and inserting the option texts in order as strings
+    var xValues = ["@Model.Option1Text", "@Model.Option2Text", "@Model.Option3Text"];
+    // Getting the respective vote counts for each option
+    var yValues = [@Model.Option1VotesCount, @Model.Option2VotesCount, @Model.Option3VotesCount];
+    // Setting the colours for the bar chart
+    var barColours = ["red", "green", "blue"];
+
+    // Creating the chart element
+    const chart = new Chart(barChart, {
+        type: "horizontalBar", // This will display the chart horizontally
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColours,
+                data: yValues
+            }]
+        },
+        options: {
+            legend: { display: false },
+            title: { display: false },
+            scales: {
+                xAxes: [{ ticks: { min: 0 } }] // This ensures that all values are seen, even when there are none or very little
+            }
+        }
+    });
+</script>

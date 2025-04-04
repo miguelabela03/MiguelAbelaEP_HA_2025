@@ -87,5 +87,16 @@ namespace Presentation.Controllers
             _pollRepository.Vote(pollId, vote);
             return RedirectToAction("List");
         }
+
+        // This method will get the poll details to show the chart
+        [HttpGet]
+        public IActionResult Results(int pollId)
+        {
+            var pollDetails = _pollRepository.GetPolls()
+                                .SingleOrDefault(x => x.PollId == pollId)!;
+
+            return View(pollDetails);
+        }
+
     }
 }
