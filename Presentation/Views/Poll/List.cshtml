@@ -8,7 +8,7 @@
     <!-- Header Section -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="text-center mx-auto">Polls</h1>
-        <a asp-action="CreatePoll" class="btn btn-outline-dark px-4">Add New Poll</a>
+        <a href="/Poll/CreatePoll" class="btn btn-outline-dark px-4">Add New Poll</a>
     </div>
 
     <!-- Poll Cards Section -->
@@ -27,7 +27,7 @@
                     </div>
                     <div class="card-footer bg-light d-flex justify-content-between">
                         <!-- View Details Button -->
-                        <a href="#" class="btn btn-outline-success">View Details</a>
+                        <a href="/Poll/ViewPollDetails?pollId=@poll.PollId" class="btn btn-outline-success">View Details</a>
                         <!-- Vote Button -->
                         <a href="#" class="btn btn-outline-danger">Vote</a>
                     </div>

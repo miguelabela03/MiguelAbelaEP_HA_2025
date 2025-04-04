@@ -58,5 +58,16 @@ namespace Presentation.Controllers
             // Passing the fields into the view
             return View(myPoll);
         }
+
+        // This method will display the details of a poll
+        [HttpGet]
+        public IActionResult ViewPollDetails(int pollId)
+        {
+            var pollDetails = _pollRepository.GetPolls()
+                                .SingleOrDefault(x => x.PollId == pollId)!;
+
+            // Returning the poll details to the view
+            return View(pollDetails);
+        }
     }
 }

@@ -1,0 +1,28 @@
+﻿@model Domain.Models.Poll
+
+<div class="container mt-5">
+    <!-- Header Section -->
+    <h1 class="text-center mb-4">Poll Details</h1>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-secondary text-white">
+            <h3 class="mb-0">@Model.Title</h3>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong class="me-2">Option 1:</strong> @Model.Option1Text
+                </li>
+                <li class="list-group-item">
+                    <strong class="me-2">Option 2:</strong> @Model.Option2Text
+                </li>
+                <li class="list-group-item">
+                    <strong class="me-2">Option 3:</strong> @Model.Option3Text
+                </li>
+            </ul>
+        </div>
+        <div class="card-footer text-end">
+            <a href="/Poll/List" class="btn btn-secondary">Back to Polls List</a>
+        </div>
+    </div>
+</div>

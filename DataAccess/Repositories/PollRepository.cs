@@ -24,12 +24,6 @@ namespace DataAccess.Repositories
             return myContext.Polls;
         }
 
-        // This method will return a specific poll by the id
-        public Poll GetPoll(int pollId)
-        {
-            return myContext.Polls.SingleOrDefault(x => x.PollId == pollId)!;
-        }
-
         // This method will enable the user to create a poll
         public void CreatePoll(Poll poll)
         {
