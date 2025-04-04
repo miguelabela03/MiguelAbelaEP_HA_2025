@@ -19,9 +19,11 @@ namespace Presentation.Controllers
         [HttpGet]
         public IActionResult List()
         {
+            // Getting the polls and ordering them by latest poll
             var pollList = _pollRepository.GetPolls()
                             .OrderBy(x => x.DateCreated)
                             .ToList();
+
             return View(pollList); // Passing the fethced polls into the view
         }
 
@@ -39,6 +41,8 @@ namespace Presentation.Controllers
         { 
             if(ModelState.IsValid)
             {
+                // Setting the current date and time automatically for when the poll was created
+                poll.DateCreated = DateTime.Now;
                 // Here the poll is being saved
                 _pollRepository.CreatePoll(poll);
                 // Showing the success alert message
