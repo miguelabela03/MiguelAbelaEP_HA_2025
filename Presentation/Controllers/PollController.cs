@@ -19,7 +19,9 @@ namespace Presentation.Controllers
         [HttpGet]
         public IActionResult List()
         {
-            var pollList = _pollRepository.GetPolls();
+            var pollList = _pollRepository.GetPolls()
+                            .OrderBy(x => x.DateCreated)
+                            .ToList();
             return View(pollList); // Passing the fethced polls into the view
         }
 
