@@ -19,8 +19,8 @@ namespace Presentation.Controllers
         [HttpGet]
         public IActionResult List()
         {
-            var list = _pollRepository.GetPolls();
-            return View(list); // Passing the fethced polls into the view
+            var pollList = _pollRepository.GetPolls();
+            return View(pollList); // Passing the fethced polls into the view
         }
 
         // This method is used to create a poll and show the empty textboxes
