@@ -20,6 +20,8 @@ namespace DataAccess.DataContext
 
         public DbSet<Poll> Polls { get; set; }
 
+        public DbSet<UserVote> UserVotes { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseLazyLoadingProxies();
