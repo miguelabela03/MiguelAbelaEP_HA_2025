@@ -69,5 +69,23 @@ namespace Presentation.Controllers
             // Returning the poll details to the view
             return View(pollDetails);
         }
+
+        [HttpGet]
+        public IActionResult Vote(int pollId)
+        {
+            var pollDetails = _pollRepository.GetPolls()
+                                .SingleOrDefault(x => x.PollId == pollId)!;
+
+            // Returning the poll details to the view
+            return View(pollDetails);
+        }
+
+        // This method will save the user vote
+        [HttpPost]
+        public IActionResult Vote(int pollId, int vote)
+        {
+            _pollRepository.Vote(pollId, vote);
+            return RedirectToAction("List");
+        }
     }
 }

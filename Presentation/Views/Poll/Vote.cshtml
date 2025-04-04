@@ -1,0 +1,46 @@
+﻿@model Domain.Models.Poll
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Choose Your Vote</h1>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0 text-center">@Model.Title</h2>
+        </div>
+
+        <div class="card-body">
+            <!-- Voting Form -->
+            <form method="post" asp-action="Vote">
+                <input type="hidden" name="pollId" value="@Model.PollId" />
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" name="vote" value="1" id="option1">
+                    <label class="form-check-label" for="option1">
+                        @Model.Option1Text
+                    </label>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" name="vote" value="2" id="option2">
+                    <label class="form-check-label" for="option2">
+                        @Model.Option2Text
+                    </label>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" name="vote" value="3" id="option3">
+                    <label class="form-check-label" for="option3">
+                        @Model.Option3Text
+                    </label>
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-outline-success">Submit Vote</button>
+
+                    <a href="/Poll/List" class="btn btn-outline-secondary">Back to Polls List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

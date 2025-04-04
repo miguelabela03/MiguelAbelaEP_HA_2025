@@ -30,5 +30,34 @@ namespace DataAccess.Repositories
             myContext.Polls.Add(poll);
             myContext.SaveChanges();
         }
+
+        // This method will enabel the user to vote within a poll
+        public void Vote(int pollId, int voteChosen)
+        {
+            // Getting the chosen poll by the id
+            var poll = myContext.Polls.FirstOrDefault(x => x.PollId == pollId);
+
+            if (poll != null)
+            {
+                // Incrementing the votes count variable according to the chosen vote
+                switch(voteChosen)
+                {
+                    case 1:
+                        poll.Option1VotesCount++;
+                        break;
+                    case 2:
+                        poll.Option2VotesCount++;
+                        break;
+                    case 3:
+                        poll.Option3VotesCount++;
+                        break;
+                    default:
+                        throw new ArgumentException("Invalid option selected");
+                }
+            }
+
+            // Saving the changes in the database
+            myContext.SaveChanges();
+        }
     }
 }
