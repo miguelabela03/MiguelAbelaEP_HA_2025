@@ -28,7 +28,7 @@ namespace Presentation.Controllers
         {
             // Getting the polls and ordering them by latest poll
             var pollList = _pollRepository.GetPolls()
-                            .OrderBy(x => x.DateCreated)
+                            .OrderByDescending(x => x.DateCreated)
                             .ToList();
 
             return View(pollList); // Passing the fethced polls into the view
