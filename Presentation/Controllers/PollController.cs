@@ -2,17 +2,23 @@
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Models;
 using Domain.Models;
+using Microsoft.AspNetCore.Authorization;
+using Presentation.ActionFilters;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Presentation.Controllers
 {
     public class PollController : Controller
     {
         private PollRepository _pollRepository;
+        private UserVoteRepository _userVoteRepository;
 
         // Constructor Injection
-        public PollController(PollRepository pollRepository)
+        public PollController(PollRepository pollRepository, UserVoteRepository userVoteRepository)
         {
             _pollRepository = pollRepository;
+            _userVoteRepository = userVoteRepository;
         }
 
         // This method will get all the polls from the database via the reposiotry and pass them to the view
@@ -70,21 +76,37 @@ namespace Presentation.Controllers
             return View(pollDetails);
         }
 
+        [Authorize]
+        [ServiceFilter(typeof(VotesActionFilter))]
         [HttpGet]
         public IActionResult Vote(int pollId)
         {
             var pollDetails = _pollRepository.GetPolls()
-                                .SingleOrDefault(x => x.PollId == pollId)!;
+                                .SingleOrDefault(x => x.PollId == pollId);
 
-            // Returning the poll details to the view
             return View(pollDetails);
         }
+
 
         // This method will save the user vote
         [HttpPost]
         public IActionResult Vote(int pollId, int vote)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            // Update the vote count, and update voting history
             _pollRepository.Vote(pollId, vote);
+
+            UserVote voteHistory = new UserVote()
+            {
+                PollFk = pollId,
+                UserFk = Guid.Parse(userId),
+                VoteDateCreated = DateTime.Now,
+            };
+
+            // Update user votes hoistory table
+            _userVoteRepository.AddUserVote(voteHistory);
+
             return RedirectToAction("List");
         }
 

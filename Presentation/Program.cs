@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using DataAccess.DataContext;
 using DataAccess.Repositories;
+using Presentation.ActionFilters;
 
 namespace Presentation
 {
@@ -21,7 +22,10 @@ namespace Presentation
                 .AddEntityFrameworkStores<PollDbContext>();
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddScoped<VotesActionFilter>();
+
             builder.Services.AddScoped<PollRepository>();
+            builder.Services.AddScoped<UserVoteRepository>();
 
             var app = builder.Build();
 
