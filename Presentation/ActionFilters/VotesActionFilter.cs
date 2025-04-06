@@ -50,19 +50,25 @@ namespace Presentation.ActionFilters
                     else
                     {
                         // Invalid userId format
-                        context.Result = new BadRequestObjectResult("Invalid userId format.");
+                        // context.Result = new BadRequestObjectResult("Invalid userId format.");
+                        context.Result = new RedirectToActionResult("List", "Poll", null);
+                        return;
                     }
                 }
                 else
                 {
                     // Missing userId claim
-                    context.Result = new BadRequestObjectResult("UserId claim is missing.");
+                    // context.Result = new BadRequestObjectResult("UserId claim is missing.");
+                    context.Result = new RedirectToActionResult("List", "Poll", null);
+                    return;
                 }
             }
             else
             {
                 // Missing or invalid pollId or unauthenticated user
-                context.Result = new BadRequestObjectResult("Poll ID is required and user must be authenticated.");
+                // context.Result = new BadRequestObjectResult("Poll ID is required and user must be authenticated.");
+                context.Result = new RedirectToActionResult("List", "Poll", null);
+                return;
             }
 
             base.OnActionExecuting(context);
