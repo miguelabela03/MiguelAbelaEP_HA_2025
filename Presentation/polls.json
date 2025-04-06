@@ -1,0 +1,35 @@
+[
+  {
+    "PollId": 1,
+    "Title": "Best Car",
+    "Option1Text": "Mercedes",
+    "Option2Text": "Audi",
+    "Option3Text": "BMW",
+    "Option1VotesCount": 0,
+    "Option2VotesCount": 0,
+    "Option3VotesCount": 0,
+    "DateCreated": "2025-04-06T17:59:54.7720493+02:00"
+  },
+  {
+    "PollId": 2,
+    "Title": "Country",
+    "Option1Text": "Malta",
+    "Option2Text": "Italy",
+    "Option3Text": "England",
+    "Option1VotesCount": 0,
+    "Option2VotesCount": 0,
+    "Option3VotesCount": 0,
+    "DateCreated": "2025-04-06T18:01:18.6235087+02:00"
+  },
+  {
+    "PollId": 3,
+    "Title": "Movies",
+    "Option1Text": "Horror",
+    "Option2Text": "Comedy",
+    "Option3Text": "Family",
+    "Option1VotesCount": 0,
+    "Option2VotesCount": 0,
+    "Option3VotesCount": 0,
+    "DateCreated": "2025-04-06T18:05:33.9889736+02:00"
+  }
+]

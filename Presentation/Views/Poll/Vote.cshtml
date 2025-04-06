@@ -14,21 +14,21 @@
                 <input type="hidden" name="pollId" value="@Model.PollId" />
 
                 <div class="form-check mb-3">
-                    <input class="form-check-input" type="radio" name="vote" value="1" id="option1">
+                    <input class="form-check-input" type="radio" name="vote" value="1" id="option1" required>
                     <label class="form-check-label" for="option1">
                         @Model.Option1Text
                     </label>
                 </div>
 
                 <div class="form-check mb-3">
-                    <input class="form-check-input" type="radio" name="vote" value="2" id="option2">
+                    <input class="form-check-input" type="radio" name="vote" value="2" id="option2" required>
                     <label class="form-check-label" for="option2">
                         @Model.Option2Text
                     </label>
                 </div>
 
                 <div class="form-check mb-3">
-                    <input class="form-check-input" type="radio" name="vote" value="3" id="option3">
+                    <input class="form-check-input" type="radio" name="vote" value="3" id="option3" required>
                     <label class="form-check-label" for="option3">
                         @Model.Option3Text
                     </label>

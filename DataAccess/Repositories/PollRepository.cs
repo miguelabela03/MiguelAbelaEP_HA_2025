@@ -1,4 +1,5 @@
 ﻿using DataAccess.DataContext;
+using Domain.Interfaces;
 using Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-    public class PollRepository
+    public class PollRepository : IPollRepository
     {
         private PollDbContext myContext;
 
@@ -19,9 +20,9 @@ namespace DataAccess.Repositories
         }
 
         // This method will return all the list of Polls in the database
-        public IQueryable<Poll> GetPolls()
+        public List<Poll> GetPolls()
         {
-            return myContext.Polls;
+            return myContext.Polls.ToList();
         }
 
         // This method will enable the user to create a poll

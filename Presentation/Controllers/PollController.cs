@@ -6,16 +6,17 @@ using Microsoft.AspNetCore.Authorization;
 using Presentation.ActionFilters;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using Domain.Interfaces;
 
 namespace Presentation.Controllers
 {
     public class PollController : Controller
     {
-        private PollRepository _pollRepository;
+        private IPollRepository _pollRepository;
         private UserVoteRepository _userVoteRepository;
 
         // Constructor Injection
-        public PollController(PollRepository pollRepository, UserVoteRepository userVoteRepository)
+        public PollController(IPollRepository pollRepository, UserVoteRepository userVoteRepository)
         {
             _pollRepository = pollRepository;
             _userVoteRepository = userVoteRepository;

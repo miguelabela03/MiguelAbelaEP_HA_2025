@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using DataAccess.DataContext;
 using DataAccess.Repositories;
 using Presentation.ActionFilters;
+using Domain.Interfaces;
 
 namespace Presentation
 {
@@ -24,8 +25,31 @@ namespace Presentation
 
             builder.Services.AddScoped<VotesActionFilter>();
 
-            builder.Services.AddScoped<PollRepository>();
+            int pollSetting = 1;
+            try
+            {
+                pollSetting = builder.Configuration.GetValue<int>("PollSetting");
+            }
+            catch
+            {
+                pollSetting = 1;
+            }
+
+            switch (pollSetting)
+            {
+                case 1:
+                    builder.Services.AddScoped<IPollRepository, PollRepository>();
+                    break;
+                case 2:
+                    builder.Services.AddScoped<IPollRepository, PollFileRepository>();
+                    break;
+                default:
+                    builder.Services.AddScoped<IPollRepository, PollRepository>();
+                    break;
+            }
+
             builder.Services.AddScoped<UserVoteRepository>();
+
 
             var app = builder.Build();
 
