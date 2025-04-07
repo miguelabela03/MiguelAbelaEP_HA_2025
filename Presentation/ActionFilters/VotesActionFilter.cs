@@ -43,6 +43,11 @@ namespace Presentation.ActionFilters
                         if (existingVote != null)
                         {
                             // User has already voted, redirecting them to the poll list
+                            if (context.Controller is Controller controller)
+                            {
+                                controller.TempData["error"] = "You have already voted on this poll.";
+                            }
+
                             context.Result = new RedirectToActionResult("List", "Poll", null);
                             return;
                         }
@@ -51,6 +56,11 @@ namespace Presentation.ActionFilters
                     {
                         // Invalid userId format
                         // context.Result = new BadRequestObjectResult("Invalid userId format.");
+                        if (context.Controller is Controller controller)
+                        {
+                            controller.TempData["error"] = "Error: Invalid user ID format.";
+                        }
+
                         context.Result = new RedirectToActionResult("List", "Poll", null);
                         return;
                     }
@@ -59,6 +69,11 @@ namespace Presentation.ActionFilters
                 {
                     // Missing userId claim
                     // context.Result = new BadRequestObjectResult("UserId claim is missing.");
+                    if (context.Controller is Controller controller)
+                    {
+                        controller.TempData["error"] = "Error: User ID claim is missing.";
+                    }
+
                     context.Result = new RedirectToActionResult("List", "Poll", null);
                     return;
                 }
@@ -67,6 +82,11 @@ namespace Presentation.ActionFilters
             {
                 // Missing or invalid pollId or unauthenticated user
                 // context.Result = new BadRequestObjectResult("Poll ID is required and user must be authenticated.");
+                if (context.Controller is Controller controller)
+                {
+                    controller.TempData["error"] = "Error: Poll ID is required and user must be authenticated.";
+                }
+
                 context.Result = new RedirectToActionResult("List", "Poll", null);
                 return;
             }

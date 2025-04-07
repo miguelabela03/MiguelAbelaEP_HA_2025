@@ -31,5 +31,16 @@
     "Option2VotesCount": 0,
     "Option3VotesCount": 0,
     "DateCreated": "2025-04-06T18:05:33.9889736+02:00"
+  },
+  {
+    "PollId": 4,
+    "Title": "Favorite Food",
+    "Option1Text": "Pasta",
+    "Option2Text": "Pizza",
+    "Option3Text": "Burger",
+    "Option1VotesCount": 0,
+    "Option2VotesCount": 0,
+    "Option3VotesCount": 0,
+    "DateCreated": "2025-04-07T10:47:24.7318729+02:00"
   }
 ]

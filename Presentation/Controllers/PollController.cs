@@ -38,7 +38,7 @@ namespace Presentation.Controllers
         [HttpGet]
         public IActionResult CreatePoll()
         {
-            Poll myPoll = new Poll(); 
+            Poll myPoll = new Poll();
             return View(myPoll); // Passing the poll fields to the view
         }
 
@@ -53,7 +53,7 @@ namespace Presentation.Controllers
                 // Here the poll is being saved
                 _pollRepository.CreatePoll(poll);
                 // Showing the success alert message
-                TempData["message"] = "Poll was added successfully";
+                TempData["message"] = "Poll has been added successfully!";
                 // Retun to the polls list
                 return RedirectToAction("List");
             }
@@ -108,6 +108,7 @@ namespace Presentation.Controllers
             // Update user votes hoistory table
             _userVoteRepository.AddUserVote(voteHistory);
 
+            TempData["message"] = "Vote has been added successfully!";
             return RedirectToAction("List");
         }
 
