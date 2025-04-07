@@ -42,5 +42,16 @@
     "Option2VotesCount": 0,
     "Option3VotesCount": 0,
     "DateCreated": "2025-04-07T10:47:24.7318729+02:00"
+  },
+  {
+    "PollId": 5,
+    "Title": "Best Pizza",
+    "Option1Text": "Margherita",
+    "Option2Text": "Funghi",
+    "Option3Text": "BBQ Chicken",
+    "Option1VotesCount": 0,
+    "Option2VotesCount": 0,
+    "Option3VotesCount": 0,
+    "DateCreated": "2025-04-07T11:35:13.6727598+02:00"
   }
 ]
